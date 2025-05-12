@@ -78,21 +78,40 @@
       background-color: #ff1493;
     }
 
-    .video-container {
+    .message-container {
       display: none;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 40px 20px;
+      text-align: center;
       z-index: 2;
       position: relative;
+      animation: fadeIn 1s ease-in forwards;
     }
 
-    video {
-      width: 90%;
-      max-width: 600px;
-      border: 10px solid #ffb6c1;
+    .message {
+      background-color: #fff0f6;
+      padding: 30px;
+      border: 3px solid #ff69b4;
       border-radius: 30px;
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+      box-shadow: 0 0 40px rgba(255, 182, 193, 0.6);
+      font-size: 1.4rem;
+      max-width: 700px;
+      line-height: 1.8;
+      color: #d63384;
+      font-family: 'Comic Neue', cursive;
+      animation: popIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .floating-hearts {
@@ -115,17 +134,9 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-120vh) scale(1.2);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
     }
 
     .interactive-bounce:hover {
@@ -133,12 +144,8 @@
     }
 
     @keyframes bounce {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(-10px);
-      }
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
     }
   </style>
 </head>
@@ -155,12 +162,17 @@
     </div>
   </div>
 
-  <div class="video-container" id="videoSection">
-    <h1 class="interactive-bounce">Hello My Moon 🌙</h1>
-    <video controls>
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <div class="message-container" id="messageSection">
+    <h1 class="interactive-bounce">To My Moon 🌙</h1>
+    <div class="message">
+      Hey M, I decided since you cannot have a card to take home, let’s give you something that brings a warm hug to you in a similar manner, in case or whenever you do miss me at home.<br><br>
+
+      My heart, my love for you is a pure light of happiness. You complete me. You make me wanna run in joy and die with laughter when I am with you—because that’s how happy you make the inner child in me. Our dance together of two souls is forever. I want you to know, that I have seen heaven, and that’s you. Seeing you brings a peace in my heart that nothing can. You bring tears to my eyes because—remember that little Krish? He feels safe finally now. He feels complete. That hole he has been trying to fix? You have filled that—my oh my God—you have filled that with love so unfathomable that you have healed me.<br><br>
+
+      Know that my love for you grows every day, every night, through our laughter, through our arguments, through moments of light and dark. Everything is better with you. Everything is better since you. The smile on my face when I see you—that’s the smile of my heart. You, my love, are my great gift. And in that beautiful letter of yours, when you mentioned that I have a sweet soul? My love, there is no compliment greater than that for me. My soul is sweet because it’s intertwined with yours, my love. String theory, remember? 💫<br><br>
+
+      Know that in these upcoming months I will miss you a lot—your hugs, your hands, your kisses. But know, we are forever and shall always return to one another. 💖
+    </div>
   </div>
 
   <script>
@@ -170,7 +182,7 @@
       const input = document.getElementById("password").value;
       if (input.toLowerCase() === correctPassword) {
         document.getElementById("login").style.display = "none";
-        document.getElementById("videoSection").style.display = "flex";
+        document.getElementById("messageSection").style.display = "flex";
       } else {
         alert("Hmm... that's not it! Try again 💭");
       }
